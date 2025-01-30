@@ -1,0 +1,143 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=0.5in, right = 0.5in, top = .75in, bottom = .75in]{geometry}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amsmath, amsfonts}
+\usepackage{tikz}
+\usepackage{comment}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xstring}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[most,many,breakable]{tcolorbox}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+\newcommand{\bd}{\textbf}
+\newcommand{\del}{\nabla}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\sbf}{\boldsymbol}
+\newcommand{\by}{\times}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Rn}{{\mathbb R^n}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cY}{\mathcal Y}
+\newcommand{\pcurl}{\nabla \times}
+\newcommand{\pdiv}{\nabla \cdot}
+\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\trace}{\mathrm{tr}\,}
+\renewcommand{\div}{\mathrm{div}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\renewcommand{\Re}{\mathrm{Re}\,}
+\newcommand{\res}{\mathrm{Res}\,}
+\newcommand{\supp}{\mathrm{supp}\,}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\bar}{\overline}
+\renewcommand{\hat}{\widehat}
+\newcommand{\pder}[3][]{%
+	\IfEqCase{#2}{%
+		{1}{\frac{\partial#1}{\partial #3}}%
+	}[\frac{\partial^{#2}}{\partial #3^{#2}}]%
+}
+\NewDocumentCommand{\paren}{m}{%
+	\left(%
+	{#1}%
+	\right)%
+}
+\NewDocumentCommand{\bracket}{m}{%
+	\left[%
+	{#1}%
+	\right]%
+}
+
+\title{Biharmonic Scattering}
+\author{Kale Stahl}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\makeatletter
+%\lhead{\@title}
+%\chead{\@date}
+%\rhead{\@author}
+%\makeatother
+
+\definecolor{boiler-gold}{RGB}{207, 185, 145}
+\definecolor{boiler-dust}{RGB}{235, 217, 159}
+\definecolor{boiler-steam}{RGB}{196, 191, 192}
+\definecolor{background}{RGB}{230, 230, 250}
+\definecolor{frame}{RGB}{153, 50, 204}
+\definecolor{hint}{RGB}{216, 191, 216}
+\newcounter{problem}
+\numberwithin{equation}{problem}
+
+\newtcbtheorem[auto counter]{problem}{Problem\refstepcounter{problem}}{%
+	enhanced,
+	colback=background,
+	colframe=frame,
+	fonttitle=\bfseries,
+	description color=boiler-steam
+}{pr}
+
+\newenvironment{solution}{%
+	\begin{tcolorbox}[breakable,colback=white,colframe=frame, enhanced]
+		\bd{Solution to Problem~\theproblem:}}{%
+		\hfill $\square$
+	\end{tcolorbox}
+	\vspace{.5cm}}
+\newenvironment{hint}{%
+	\begin{tcolorbox}[breakable,colback=hint,colframe=frame]
+		\bd{Hint:}\itshape}
+	{%
+\end{tcolorbox}}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{theorem}
+		Let
+		\begin{align}
+			T_{ik}w = \sum w_n\gamma_ne^{in\theta}
+		\end{align}
+		Where
+		\begin{align}
+			\gamma_n = \frac{ik\paren{H^{(1)}_n(ikR)}^\prime}{H^{(1)}_n(ikR)}
+		\end{align}
+		Then we have 
+		\begin{align}
+			\lim_{k\to 0}\gamma_n = \frac{-|n|}{R}
+		\end{align}
+	\end{theorem}
+	\begin{proof}
+		We first use identities to calculate $\paren{H^{(1)}_n(ikR)}^\prime$. We see
+		\begin{align}
+			\paren{H^{(1)}_n(ikR)}^\prime &= H^{(1)}_{n-1}(ikR)- \frac{n}{ikR}H^{(1)}_n(ikR)
+		\end{align}
+		So then 
+		\begin{align}
+			\gamma_n &= \frac{ik\paren{H^{(1)}_{n-1}(ikR)- \frac{n}{ikR}H^{(1)}_n(ikR)}}{H^{(1)}_n(ikR)}
+		\end{align}
+		Taking the limit as $k\to 0$ we see
+		\begin{align}
+			\lim_{k\to 0}\gamma_n &= \lim_{k\to 0}ik\frac{\paren{H^{(1)}_{n-1}(ikR)- \frac{n}{ikR}H^{(1)}_n(ikR)}}{H^{(1)}_n(ikR)}\\
+			 &= \lim_{k\to 0}\frac{ikH^{(1)}_{n-1}(ikR)}{H^{(1)}_n(ikR)} - \frac{ik}{ik}\frac{- nH^{(1)}_n(ikR)}{RH^{(1)}_n(ikR)}
+		\end{align}
+		Now, the first term should go to zero, so if we can show that $\frac{H^{(1)}_n(ikR)}{H^{(1)}_n(ikR)} \to 1$, then we have our proof. I think we can take the limit and expand into $\Gamma(ikR)$, but I need to look into it more.
+	\end{proof}
+
+	
+\end{document}
