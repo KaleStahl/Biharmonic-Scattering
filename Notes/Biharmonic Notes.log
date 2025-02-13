@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2023.4.14)  6 FEB 2025 12:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2023.4.14)  6 FEB 2025 21:28
 entering extended mode
 **"./Biharmonic Notes.tex"
 (Biharmonic Notes.tex
@@ -762,20 +762,20 @@ Library (tcolorbox): 'tcbposter.code.tex' version '4.42'
  (Biharmonic Notes.aux)
 \openout1 = `"Biharmonic Notes.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -834,12 +834,12 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count334
-LaTeX Font Info:    Trying to load font information for U+msa on input line 115
+LaTeX Font Info:    Trying to load font information for U+msa on input line 118
 .
  (C:\Users\kales\AppData\Local\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 115
+LaTeX Font Info:    Trying to load font information for U+msb on input line 118
 .
 
 (C:\Users\kales\AppData\Local\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -847,58 +847,64 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/kales/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<../Numerics/gamma_n0.png, id=56, 421.575pt x 316.0608pt>
-File: ../Numerics/gamma_n0.png Graphic file (type png)
-<use ../Numerics/gamma_n0.png>
-Package pdftex.def Info: ../Numerics/gamma_n0.png  used on input line 181.
+<../Numerics/Images/gamma_n0.png, id=56, 421.575pt x 316.0608pt>
+File: ../Numerics/Images/gamma_n0.png Graphic file (type png)
+<use ../Numerics/Images/gamma_n0.png>
+Package pdftex.def Info: ../Numerics/Images/gamma_n0.png  used on input line 18
+4.
 (pdftex.def)             Requested size: 271.0125pt x 203.18489pt.
-<../Numerics/gamma_n1.png, id=57, 421.575pt x 316.0608pt>
-File: ../Numerics/gamma_n1.png Graphic file (type png)
-<use ../Numerics/gamma_n1.png>
-Package pdftex.def Info: ../Numerics/gamma_n1.png  used on input line 186.
+<../Numerics/Images/gamma_n1.png, id=57, 421.575pt x 316.0608pt>
+File: ../Numerics/Images/gamma_n1.png Graphic file (type png)
+<use ../Numerics/Images/gamma_n1.png>
+Package pdftex.def Info: ../Numerics/Images/gamma_n1.png  used on input line 18
+9.
 (pdftex.def)             Requested size: 271.0125pt x 203.18489pt.
-<../Numerics/gamma_n-1.png, id=58, 421.575pt x 316.0608pt>
-File: ../Numerics/gamma_n-1.png Graphic file (type png)
-<use ../Numerics/gamma_n-1.png>
-Package pdftex.def Info: ../Numerics/gamma_n-1.png  used on input line 191.
+<../Numerics/Images/gamma_n-1.png, id=58, 421.575pt x 316.0608pt>
+File: ../Numerics/Images/gamma_n-1.png Graphic file (type png)
+<use ../Numerics/Images/gamma_n-1.png>
+Package pdftex.def Info: ../Numerics/Images/gamma_n-1.png  used on input line 1
+94.
 (pdftex.def)             Requested size: 271.0125pt x 203.18489pt.
-<../Numerics/gamma_n-5.png, id=59, 421.575pt x 316.0608pt>
-File: ../Numerics/gamma_n-5.png Graphic file (type png)
-<use ../Numerics/gamma_n-5.png>
-Package pdftex.def Info: ../Numerics/gamma_n-5.png  used on input line 196.
+<../Numerics/Images/gamma_n-5.png, id=59, 421.575pt x 316.0608pt>
+File: ../Numerics/Images/gamma_n-5.png Graphic file (type png)
+<use ../Numerics/Images/gamma_n-5.png>
+Package pdftex.def Info: ../Numerics/Images/gamma_n-5.png  used on input line 1
+99.
 (pdftex.def)             Requested size: 271.0125pt x 203.18489pt.
-<../Numerics/gamma_n5.png, id=60, 421.575pt x 316.0608pt>
-File: ../Numerics/gamma_n5.png Graphic file (type png)
-<use ../Numerics/gamma_n5.png>
-Package pdftex.def Info: ../Numerics/gamma_n5.png  used on input line 201.
+<../Numerics/Images/gamma_n5.png, id=60, 421.575pt x 316.0608pt>
+File: ../Numerics/Images/gamma_n5.png Graphic file (type png)
+<use ../Numerics/Images/gamma_n5.png>
+Package pdftex.def Info: ../Numerics/Images/gamma_n5.png  used on input line 20
+4.
 (pdftex.def)             Requested size: 271.0125pt x 203.18489pt.
- [2] [3 <../Numerics/gamma_n0.png (PNG copy)> <../Numerics/gamma_n1.png (PNG co
-py)>] [4 <../Numerics/gamma_n-1.png (PNG copy)> <../Numerics/gamma_n-5.png (PNG
- copy)>] [5 <../Numerics/gamma_n5.png (PNG copy)>] (Biharmonic Notes.aux) ) 
+ [2] [3 <../Numerics/Images/gamma_n0.png (PNG copy)> <../Numerics/Images/gamma_
+n1.png (PNG copy)>] [4 <../Numerics/Images/gamma_n-1.png (PNG copy)> <../Numeri
+cs/Images/gamma_n-5.png (PNG copy)>] [5 <../Numerics/Images/gamma_n5.png (PNG c
+opy)>] (Biharmonic Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 23479 strings out of 479334
- 485389 string characters out of 2861332
- 839433 words of memory out of 3000000
- 40513 multiletter control sequences out of 15000+200000
+ 23482 strings out of 479334
+ 485649 string characters out of 2861332
+ 839455 words of memory out of 3000000
+ 40516 multiletter control sequences out of 15000+200000
  411639 words of font info for 59 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,13n,116p,422b,905s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/
-Users/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/
-Users/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
-Users/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
-Users/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
-Users/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/U
-sers/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Us
-ers/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Use
-rs/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/User
-s/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users
-/kales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/k
-ales/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/kal
-es/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/kal
-es/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/kale
-s/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/kales
-/AppData/Local/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+<C:/Users/kales/AppData/Local/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmex10.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmmi5.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr17.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr5.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmr7.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsy5.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb><C:/Users/kales/AppData/Local/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmti10.pfb>
 Output written on "Biharmonic Notes.pdf" (5 pages, 336891 bytes).
 PDF statistics:
  122 PDF objects out of 1000 (max. 8388607)
