@@ -8,26 +8,28 @@ N= 20;                                              % accuracy parameter
 np = 2*N;                                           % # of points
 k = 1:N;                                            % orders in Bessel expansion
 
-%% Angles and Radii for Boundary
-t1 = 1.5*pi*(.5:np-.5)'/np;                         % angles of boundary pts
-r1 = 1./max(abs(sin(t1)),abs(cos(t1)));             % radii of boundary pts
-t2 = 1.5*pi*rand(np,1);                             % angles of interior pts
-r2 = rand(np,1)./max(abs(sin(t2)),abs(cos(t2)));    % radii interior pts
-t = [t1; t2];                                      % combined boundary and interior angles
-r = [r1; r2]';                                      % combined boundary and interior radii
+%% Boundary Conditions
+
+te = 1.5*pi*(.5:np-.5)'/np;                         % angles of boundary pts
+re = 1./max(abs(sin(te)),abs(cos(te)));             % radii of boundary pts
+ti = 1.5*pi*rand(np,1);                             % angles of interior pts
+ri = rand(np,1)./max(abs(sin(ti)),abs(cos(ti)));    % radii interior pts
+t = [te; ti];                                      % combined boundary and interior angles
+r = [re; ri]';                                      % combined boundary and interior radii
 
 %% Set up A and Find Relative Subspace Angles
+
 lambda_vec = linspace(.1, 25, 125);                              % trial values of lambda
 S = [];
-for ri = r
-    si = [];
+for rj = r
+    sj = [];
     for lambda = lambda_vec
-        A = sin(2*t*k/3).*besselj(2*k/3, sqrt(lambda)*ri);
+        A = sin(2*t*k/3).*besselj(2*k/3, sqrt(lambda)*rj);
         [Q,R] = qr(A,0);
         s = min(svd(Q(1:np,:)));                            % subspace angle for this lambda
-        si =[si s];
+        sj =[sj s];
     end
-    S = [S;si];
+    S = [S; sj];
 end
 %% Convert to signed subspace angles
 
