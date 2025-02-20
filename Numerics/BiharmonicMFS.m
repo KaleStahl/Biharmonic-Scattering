@@ -27,6 +27,7 @@ for rj = r
         A = sin(2*t*k/3).*besselj(2*k/3, sqrt(lambda)*rj);
         [Q,R] = qr(A,0);
         s = min(svd(Q(1:np,:)));                            % subspace angle for this lambda
+
         sj =[sj s];
     end
     S = [S; sj];

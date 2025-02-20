@@ -11,9 +11,9 @@ k = 1:N;                                            % orders in Bessel expansion
 %% Boundary Conditions
 
 te = 1.5*pi*(.5:np-.5)'/np;                         % angles of boundary pts
-re = 1./max(abs(sin(t1)),abs(cos(t1)));             % radii of boundary pts
+re = 1./max(abs(sin(te)),abs(cos(te)));             % radii of boundary pts
 ti = 1.5*pi*rand(np,1);                             % angles of interior pts
-ri = rand(np,1)./max(abs(sin(t2)),abs(cos(t2)));    % radii interior pts
+ri = rand(np,1)./max(abs(sin(ti)),abs(cos(ti)));    % radii interior pts
 t = [te; ti];                                      % combined boundary and interior angles
 r = [re; ri]';                                      % combined boundary and interior radii
 
@@ -27,6 +27,7 @@ for rj = r
         A = sin(2*t*k/3).*besselj(2*k/3, sqrt(lambda)*rj);
         [Q,R] = qr(A,0);
         s = min(svd(Q(1:np,:)));                            % subspace angle for this lambda
+
         sj =[sj s];
     end
     S = [S; sj];
