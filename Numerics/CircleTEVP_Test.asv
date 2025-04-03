@@ -3,7 +3,7 @@ clc;
 close all;
 
 %% Constants
-d_lambda = [2.9026 3.384 3.412 3.976]; %dirichlet eigenvalues of the unit sphere
+d_lambda = [2.9026 3.384 3.412 3.976]; %dirichlet eigenvalues of the unit circle
 N_I = 20;                   % number of interior points
 N_B = 20;                   % Number of boundary points
 N_K = 100;                   % number of bessel expansions to run through
@@ -13,7 +13,7 @@ k = linspace(2.8, 3, N_K);   % bessel expansion numbers
 
 theta_i = linspace(0, 2*pi, N_I);   % interior angles
 theta_b = linspace(0, 2*pi, N_B);     % boundary angles
-r_i = linspace(0, .5, N_I);         % interior radii
+r_i = linspace(, 2, N_I);         % interior radii
 x_b = cos(theta_b);
 y_b = sin(theta_b);
 x_i = r_i.*cos(theta_i);
@@ -22,10 +22,13 @@ y_i = r_i.*sin(theta_i);
 
 %% Basis
 
-ourbasis = @(i, j, ell, theta) besselj(i, k(ell)) * cos(i * theta(i));
-basis1 = @(i, j, ell, theta) besselj(i, k(ell)) * exp(1i * i * theta(i));
-basis2 = @(i, j, ell, theta) besselj(i, k(ell)) * sin(i * theta(i));
-basis3 = @(i, j, ell, theta) besselh(0, k(ell)) * cos(i * theta(i));
+ourbasis = @(n, ell, theta) besselj(n-1, k(ell)) * cos((n-1) * theta(n));
+basis1 = @(n, ell, theta) besselj(n-1, k(ell)) * exp(1i * n * theta(n));
+basis2 = @(n, ell, theta) besselj(n-1, k(ell)) * sin((n-1) * theta(n));
+basis3 = @(n, ell, theta) besselh(0, k(ell));
+
+basis = basis1;
+
 %% Set up A
 
 A = zeros(N_B, N_B+N_I, N_K);
@@ -34,7 +37,7 @@ A = zeros(N_B, N_B+N_I, N_K);
 for i = 1:N_B
     for j = 1:N_I
         for l = 1:N_K
-            A(i, j, l) = besselj(i-1, k(l))*cos((i-1)*theta_b(i));
+            A(i, j, l) = basis(i, l, theta_b);
         end
     end
 end
@@ -43,22 +46,25 @@ end
 for i = 1:N_B
     for j = 1:N_I
         for l = 1:N_K
-            A(i, j+N_B, l) = besselj(i-1, k(l)*r_i(j))*cos((i-1)*theta_i(j));
+            A(i, j+N_B, l) = basis(j, l, theta_i);
         end
     end
 end
 
 %% QR factorization
 
-vect = zeros(N_K, 1);
+vect = zeros(N_K, 3);
 for i =1:N_K
     [Q,R] = qr(A(:, :, i).');
     Q_t = Q(1:N_B, 1:N_B);
-    vect(i) =min(svd(Q_t)); 
+    vect(i, :) = mink(svd(Q_t), 3); 
 end
 
 %% Plot
-
-plot(k, (vect));
+hold on;
+plot(k, log(vect(:, 1)));
+plot(k, log(vect(:, 2)));
+plot(k, log(vect(:, 3)));
 xline(d_lambda);
 xlim([min(k) max(k)])
+hold off;

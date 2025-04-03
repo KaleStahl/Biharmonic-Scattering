@@ -3,17 +3,17 @@ clc;
 close all;
 
 %% Constants
-d_lambda = [2.9026 3.384 3.412 3.976]; %dirichlet eigenvalues of the unit sphere
+d_lambda = [2.408 3.384 3.412 3.976]; %dirichlet eigenvalues of the unit circle
 N_I = 20;                   % number of interior points
 N_B = 20;                   % Number of boundary points
-N_K = 100;                   % number of bessel expansions to run through
-k = linspace(2.8, 3, N_K);   % bessel expansion numbers
+N_K = 40;                   % number of bessel expansions to run through
+k = linspace(2, 3, N_K);   % bessel expansion numbers
 
 %% Set up Boundary Conditions
 
 theta_i = linspace(0, 2*pi, N_I);   % interior angles
 theta_b = linspace(0, 2*pi, N_B);     % boundary angles
-r_i = linspace(1.5, 2, N_I);         % interior radii
+r_i = .5;                               % interior radii
 x_b = cos(theta_b);
 y_b = sin(theta_b);
 x_i = r_i.*cos(theta_i);
@@ -23,11 +23,14 @@ y_i = r_i.*sin(theta_i);
 %% Basis
 
 ourbasis = @(n, ell, theta) besselj(n-1, k(ell)) * cos((n-1) * theta(n));
-basis1 = @(n, ell, theta) besselj(n-1, k(ell)) * exp(1i * n * theta(n));
-basis2 = @(n, ell, theta) besselj(n-1, k(ell)) * sin((n-1) * theta(n));
-basis3 = @(n, ell, theta) besselh(0, k(ell) * abs());
 
-basis = ourbasis;
+basis1 = @(n, ell, theta) besselj(n-1, k(ell)) * exp(1i * n * theta(n));
+
+basis2 = @(n, ell, theta) besselj(n-1, k(ell)) * sin((n-1) * theta(n));
+
+basis3 = @(n, ell, theta) besselh(0, k(ell));
+
+basis = basis1;
 
 %% Set up A
 
@@ -51,20 +54,22 @@ for i = 1:N_B
     end
 end
 
+
 %% QR factorization
 
-vect = zeros(N_K, 3);
+min_num = 1;
+vect = zeros(N_K, min_num);
 for i =1:N_K
     [Q,R] = qr(A(:, :, i).');
     Q_t = Q(1:N_B, 1:N_B);
-    vect(i, :) = mink(svd(Q_t), 3); 
+    vect(i, :) = mink(svd(Q_t), min_num); 
 end
 
 %% Plot
 hold on;
-plot(k, log(vect(:, 1)));
-plot(k, log(vect(:, 2)));
-plot(k, log(vect(:, 3)));
+plot(k, (vect(:, 1)));
+%plot(k, (vect(:, 2)));
+%plot(k, (vect(:, 3)));
 xline(d_lambda);
 xlim([min(k) max(k)])
 hold off;
