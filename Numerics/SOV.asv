@@ -1,23 +1,27 @@
 
-%%
-n = 2;
-k = 1;
-r = 1;
-theta = pi/2
+%% Constants
+N= 50;                          % Number of boundary points
+n = 2;                          % relative refractive index
+p = 5;                          % Number of terms to approximate
+k = 1;                          % wave number
+r = 1;                          % radius of collection
+theta = linspace(0, 2*pi, N);   % Boundary data
+phi = linspace(0, 2*pi, N);     % Test Data
+
 
 %%
-A = [ 
-    besselh(n, k*r),                                besselh(n, 1i*k*r),                                     -besselj(n, k^4*sqrt(n)*r),                                                 -besselj(n, 1i*k^4*sqrt(n)*r);
-    .5*k*(besselh(n-1, k*r)-besselh(n+1, k*r)),     .5*1i*k*(besselh(n-1, 1i*k*r)-besselh(n+1, 1i*k*r)),    k^4*sqrt(n)*.5*(besselj(n-1, k^4*sqrt(n)*r)-besselj(n+1, k^4*sqrt(n)*r)),   1i*k^4*sqrt(n)*.5*(besselj(n-1, 1i*k^4*sqrt(n)*r)-besselj(n+1, 1i*k^4*sqrt(n)*r));
-    -k^2*besselh(n, k*r),                           k^2*besselh(n, 1i*k*r),                                 k^2*sqrt(n)*besselj(n, k^4*sqrt(n)*r),                                      -k^2*sqrt(n)*besselj(n, 1i*k^4*sqrt(n)*r);
-    -.5*k^3*(besselh(n-1, k*r)-besselh(n+1, k*r)),  .5*1i*k^3*(besselh(n-1, 1i*k*r)-besselh(n+1, 1i*k*r)),  -k^6*n*.5*(besselj(n-1, k^4*sqrt(n)*r)-besselj(n+1, k^4*sqrt(n)*r)),        1i*k^6*n*.5*(besselj(n-1, 1i*k^4*sqrt(n)*r)-besselj(n+1, 1i*k^4*sqrt(n)*r));
-    ]*exp(1i*n*theta);
+a_p = zeros(2*p+1, 1);
+u_infty1 =0;
+for i = -p:p
+    x = findCoeffs(n, p:p, k, r);
+    u_infty1 = u_infty1 - 4*1i*sux(1)*exp(1i*i*(theta-phi));
+end
+u_infty1
 
-y = [
-    -exp(1i*k*r);
-    -1i*k*exp(1i*k*r*\t);
-    -1i*k*r*exp(1i*k*r);
-    -1i*k*exp(1i*k*r) + k^2*r*exp(1i*k*r);
-    ];
+u_infty2 =0;
+for i = -p:p
+    x = findCoeffs(n, i, k, r);
+    u_infty2 = u_infty2 - 4*1i*x(1)*exp(1i*i*(-theta+phi));
+end
 
-x = A\y
+u_infty2

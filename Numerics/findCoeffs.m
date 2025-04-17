@@ -1,0 +1,31 @@
+function x = findCoeffs(n, p, k, r, theta, phi)
+
+Jprime = @(arg) .5*(besselj(p-1, arg)-besselj(p+1, arg));
+Hprime = @(arg) .5*(besselh(p-1, arg)-besselh(p+1, arg));
+J = @(arg) besselj(p, arg);
+H = @(arg) besselh(p, arg);
+
+x = r*[cos(theta), sin(theta)];
+d = [cos(phi), sin(phi)];
+
+A = [ 
+    H(k*r),             H(1i*k*r),              -J(k*n^(1/4)*r),                    -J(1i*k*n^(1/4)*r);
+    k*(Hprime(k*r)),    1i*k*Hprime(1i*k*r),    k*n^(1/4)*Jprime(k*n^(1/4)*r),      -1i*k*n^(1/4)*Jprime(1i*k*n^(1/4)*r);
+    -k^2*H(k*r),        k^2*H(1i*k*r),          k^2*n^(1/2)*J(k*n^(1/4)*r),         -k^2*n^(1/2)*J(1i*k*n^(1/4)*r);
+    -k^3*(Hprime(k*r)), 1i*k^3*Hprime(1i*k*r),  k^3*n^(3/4)*Jprime(k*n^(1/4)*r),    -1i*k^3*n^(3/4)*Jprime(1i*k*n^(1/4)*r);
+    ];
+
+
+y = [
+        J(k*r);
+        k*J(k*r);
+        k^2*J(k*r);
+        k^3*J(k*r)
+    ];
+
+x = A\y;
+
+
+
+
+end

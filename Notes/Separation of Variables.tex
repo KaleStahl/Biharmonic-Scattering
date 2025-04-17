@@ -1,0 +1,160 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=0.5in, right = 0.5in, top = .75in, bottom = .75in]{geometry}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amsmath, amsfonts}
+\usepackage{tikz}
+\usepackage{comment}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xstring}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\numberwithin{theorem}{section}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
+\newtheorem{lemma}{Lemma}
+\numberwithin{lemma}{section}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\numberwithin{equation}{section}
+
+\newcommand{\bd}{\textbf}
+\newcommand{\del}{\nabla}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\inv}{^{-1}}
+\newcommand{\sbf}{\boldsymbol}
+\newcommand{\by}{\times}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Rn}{{\mathbb R^n}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\normsubgp}{\unlhd}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cY}{\mathcal Y}
+\newcommand{\pcurl}{\nabla \times}
+\newcommand{\pdiv}{\nabla \cdot}
+\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\im}{\mathrm{im}\,}
+\newcommand{\coim}{\mathrm{coim}\,}
+\newcommand{\rank}{\mathrm{rank}\,}
+\renewcommand{\ker}{\mathrm{ker}\,}
+\newcommand{\trace}{\mathrm{tr}\,}
+\renewcommand{\div}{\mathrm{div}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\renewcommand{\Re}{\mathrm{Re}\,}
+\newcommand{\res}{\mathrm{Res}\,}
+\newcommand{\End}{\mathrm{End}\,}
+\newcommand{\Span}{\mathrm{Span}\,}
+\newcommand{\stab}{\mathrm{stab}\,}
+\newcommand{\orbit}{\mathrm{orbit}\,}
+\renewcommand{\phi}{\varphi}
+\newcommand{\supp}{\mathrm{supp}\,}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\bar}{\overline}
+\renewcommand{\hat}{\widehat}
+
+\newcommand{\innerprod}[2]{\left\langle #1,\, #2\right\rangle}
+\newcommand{\avg}[1]{\left\langle #1\right\rangle}
+\newcommand{\pder}[3][]{%
+	\IfEqCase{#2}{%
+		{1}{\frac{\partial#1}{\partial #3}}%
+	}[\frac{\partial^{#2}}{\partial #3^{#2}}]%
+}
+\NewDocumentCommand{\paren}{m}{%
+	\left(%
+	{#1}%
+	\right)%
+}
+\NewDocumentCommand{\bracket}{m}{%
+	\left[%
+	{#1}%
+	\right]%
+}
+
+
+\title{Separation of Variables}
+\date{Spring 2025}
+\author{Kale Stahl}
+
+\pagestyle{fancy}
+\fancyhf{}
+\makeatletter
+\lhead{\@title}
+\chead{\@date}
+\rhead{\@author}
+\makeatother
+
+\begin{document}
+	
+	%Makes fancy title
+	\makeatletter
+	\begin{center}
+		\vspace{.25cm}
+		{\centering \Large \bd \@title}\\
+		\vspace{.5cm}
+		{\large \@author}
+		\vspace{.75cm}
+	\end{center}
+	\makeatother
+	For the domain $\R^2\setminus B(1, 0)$, we wish to solve
+	\begin{align}
+		u^s = u_{pr} + u_{ev}\\
+		\Delta u_{pr}+ k^2u_{pr} = 0\\
+		\Delta u_{ev} - k^2 u_{ev} = 0
+	\end{align}
+	Where
+	\begin{align}
+		u_{pr}(r, \theta) &= \sum_p i^pa_pH^{(1)}_p(kr)e^{ip(\theta - \phi)}\\
+		u_{ev}(r, \theta) &= \sum_p i^pb_pH^{(1)}_p(ikr)e^{ip(\theta - \phi)}
+	\end{align}
+	Then inside of $B(1, 0)$ we have 
+	\begin{align}
+		u = u_H + u_M\\
+		\Delta u_{H}+ k^2\sqrt n u_{H} = 0\\
+		\Delta u_{M} - k^2\sqrt n u_{M} = 0
+	\end{align}
+	where
+	\begin{align}
+		u_{H}(r, \theta) &= \sum_p i^pc_pJ_p(k\sqrt[4]{n}r)e^{ip(\theta - \phi)}\\
+		u_{M}(r, \theta) &= \sum_p i^pd_pJ_p(ik\sqrt[4]{n}r)e^{ip(\theta - \phi)}
+	\end{align}
+	We get the system
+	\begin{align}
+		u^s - u = -u^i\\
+		\partial_ru^s- \partial_r u^i = - \partial_r u^i\\
+		\Delta u^s - \Delta u = - \Delta u^i\\
+		\partial_r\Delta u^s - \partial_r \Delta u = \partial_r\Delta u^i
+	\end{align}
+	We wish to solve for the constants $a_p$, as 
+	\begin{align}
+		u^\infty = u^\infty_{pr}(\theta, \phi) \approx \sum_{|p| = 5}\frac{4}{i}a_pe^{ip(\theta -\phi)}
+	\end{align}
+	Simplifying each equation individually, we see
+	\begin{align}
+		u_{pr}+u_{ev} -(u_H + u_M) &= -u^i\\
+		\sum_p \paren{i^pa_pH^{(1)}_p(kr)e^{ip(\theta-\phi)}+i^pb_pH^{(1)}_p(ikr)e^{ip(\theta - \phi)}-\paren{i^pc_pJ_p(k\sqrt[4]{n}r)e^{ip(\theta-\phi)}+i^pd_pJ_p(ik\sqrt[4]{n}r)e^{ip(\theta - \phi)}}} &= -\sum_pi^pJ_p(kr)e^{-ip(\theta - \phi)}\\
+		a_pH^{(1)}_p(kr)+b_pH^{(1)}_p(ikr)-c_pJ_p(k\sqrt[4]{n}r)-d_pJ_p(ik\sqrt[4]{n}r) &= -J_p(kr)
+	\end{align}
+	\begin{align}
+	\partial_r u_{pr}+\partial_r u_{ev} -(\partial_r u_H + \partial_r u_M) &= -\partial_r u^i\\
+		\sum_p \paren{i^pka_pH^{(1)}_p(kr)e^{ip(\theta-\phi)}+i^pikb_pH^{(1)}_p(ikr)e^{ip(\theta - \phi)}-\paren{i^pc_pJ_p(k\sqrt[4]{n}r)e^{ip(\theta-\phi)}+i^pd_pJ_p(ik\sqrt[4]{n}r)e^{ip(\theta - \phi)}}} &= -\sum_pi^pJ_p(kr)e^{-ip(\theta - \phi)}\\
+		a_pH^{(1)}_p(kr)+b_pH^{(1)}_p(ikr)-c_pJ_p(k\sqrt[4]{n}r)-d_pJ_p(ik\sqrt[4]{n}r) &= -J_p(kr)
+	\end{align}
+\end{document}
