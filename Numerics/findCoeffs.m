@@ -18,9 +18,9 @@ A = [
 
 y = [
         J(k*r);
-        k*J(k*r);
+        k*Jprime(k*r);
         k^2*J(k*r);
-        k^3*J(k*r)
+        k^3*Jprime(k*r)
     ];
 
 x = A\y;

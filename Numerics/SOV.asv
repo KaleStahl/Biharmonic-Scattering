@@ -1,27 +1,36 @@
 
 %% Constants
-N= 50;                          % Number of boundary points
+N= 100;                         % Number of discretized points
+Np = 100;
 n = 2;                          % relative refractive index
-p = 5;                          % Number of terms to approximate
-k = 1;                          % wave number
-r = 1;                          % radius of collection
+p = -5:5;                       % Number of terms to approximate
+k = 5;                          % wave number
+r = 1;                          % radius of object
 theta = linspace(0, 2*pi, N);   % Boundary data
 phi = linspace(0, 2*pi, N);     % Test Data
 
 
+%% Testing Reciprocity Relation
+
+u_infty_1 = findFarField(theta, phi, p, n, k, r);
+
+u_infty_2 = findFarField(phi+pi, theta+pi, p, n , k, r);
+
+%% Discretize Far-Field Operator
+
+[Theta, Phi] = meshgrid(theta, phi);
+F = 2*pi/N*findFarField(Theta, Phi, p, n, k, r);
+g = @(z, t) exp(1i*k*dot(z, [cos(t), sin(t)]));
+g_vec = @(z) arrayfun(@(t) g(z, t), theta).';
+D = @(z) dot(F*g_vec(z), g_vec(z));
+[X, Y] = meshgrid(linspace(-2*r, 2*r, Np));
+z = cat(3, X, Y);
+Z = zeros(Np);
+
 %%
-a_p = zeros(2*p+1, 1);
-u_infty1 =0;
-for i = -p:p
-    x = findCoeffs(n, p:p, k, r);
-    u_infty1 = u_infty1 - 4*1i*sux(1)*exp(1i*i*(theta-phi));
-end
-u_infty1
+for zi = z
+surf(X, Y, abs(Z))
 
-u_infty2 =0;
-for i = -p:p
-    x = findCoeffs(n, i, k, r);
-    u_infty2 = u_infty2 - 4*1i*x(1)*exp(1i*i*(-theta+phi));
-end
 
-u_infty2
+
+
